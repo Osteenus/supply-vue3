@@ -177,35 +177,32 @@
         },
         data() {
             return  {
-                deliveries: [],
+                deliveries: null,
                 nothingFound: false,
                 checkedItemsCount: 0,
-
             }
         },
         methods: {
-            /* edit(id) {
-                this.$inertia.get('deliveries/edit/' + id)
-            },
+            // edit(id) {
+            //    this.$inertia.get('deliveries/edit/' + id)
+            // },
             formatDate(date) {
                 return new Date(date).toLocaleDateString();
-            }, */
+            },
         },
         computed: {
             displayedDeliveries() {
                 return this.filteredDeliveries;
+            },
+            filteredDeliveries() {
+                return this.deliveries;
             }
         },
         mounted() {
-            axios.get('api/deliveries/')
-                .then(function(response) {
-                    console.log(response.data)
-                })
-                .catch(function (error) {
-                    // handle errorwsaa
-                    console.log(error);
-                });
-            },
+            axios
+                .get('/api/deliveries/')
+                .then(response => (this.deliveries = response.data))
+        },
         updated() {
             
         },

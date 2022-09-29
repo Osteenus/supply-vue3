@@ -29,7 +29,7 @@ class DeliveriesController extends Controller
         //get all deliveries with all attributes
         $deliveries = $this->deliveryRepository->getAllForTable();
 
-        return ['deliveries'=> $deliveries];
+        return $deliveries;
     }
 
     /**
